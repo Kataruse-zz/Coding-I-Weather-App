@@ -36,10 +36,13 @@ window.addEventListener("load", () => {
               temperatureSection.addEventListener('click', () =>{
                 if(temperatureSpan.textContent === "F"){
                   temperatureSpan.textContent = "C";
-                  temperatureDegree.textcontent = (temp_c);
                 }else{
                   temperatureSpan.textContent ="F"
-                  temperatureDegree.textcontent = temp_f;
+                }
+                if(temperatureDegree.textContent == temp_f){
+                  temperatureDegree.textContent = temp_c;
+                }else{
+                  temperatureDegree.textContent = temp_f;
                 }
               });
         });

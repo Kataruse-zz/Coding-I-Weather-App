@@ -8,7 +8,6 @@ window.addEventListener("load", () => {
   let locationTimezone = document.querySelector(".location-timezone");
   let temperatureSection = document.querySelector('.temperature');
   const temperatureSpan = document.querySelector('.temperature span');
-  let icon = document.querySelector('.icon');
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
@@ -24,14 +23,13 @@ window.addEventListener("load", () => {
         .then(data => {
           console.log(data);
           const { temp_f, condition, temp_c} = data.current;
+          const {tz_id} = data.location;
           //Set DOM Elements from the API
           temperatureDegree.textContent = temp_f;
           temperatureDescription.textContent = condition.text;
-          const {tz_id} = data.location;
           locationTimezone.textContent = tz_id;
-          icon.src = condition.icon;
-            //Set Icon
-            //const {icon} = data.current.condition;
+          var logo = document.getElementById('icon');
+          logo.src = condition.icon;
 
             //Change temperature to Celsius/Farenheit
               temperatureSection.addEventListener('click', () =>{
